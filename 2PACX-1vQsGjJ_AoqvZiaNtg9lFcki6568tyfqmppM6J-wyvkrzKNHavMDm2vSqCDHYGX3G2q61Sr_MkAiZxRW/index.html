@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="https://ssl.gstatic.com/docs/presentations/images/favicon5.ico">
+        <style>
+            body, html, iframe {width: 100%; height: 100%;}
+            * {margin: 0; padding: 0;}
+        </style>
+        <title>Ładowanie…</title>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132681474-3"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-132681474-3', {anonymize_ip: true});
+        </script>
+    </head>
+    <body>
+        <iframe name="slides" src="https://docs.google.com/presentation/d/e/2PACX-1vQsGjJ_AoqvZiaNtg9lFcki6568tyfqmppM6J-wyvkrzKNHavMDm2vSqCDHYGX3G2q61Sr_MkAiZxRW/embed?loop=false" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <script>
+            const slides = document.querySelector('iframe');
+
+            // Set page title
+            fetch(slides.src)
+                .then(response => response.text())
+                .then(text => {
+                    document.title = text.match(/<title\b[^>]*>(.*)<\/title>/)[1];
+                })
+                .catch(() => document.title = 'Prezentacje Google');
+
+            // Focus slideshow
+            const focusSlides = () => slides.contentWindow.focus();
+            focusSlides();
+            slides.addEventListener('load', focusSlides);
+            window.addEventListener('focus', focusSlides);
+        </script>
+    </body>
+</html>
